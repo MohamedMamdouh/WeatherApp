@@ -22,7 +22,7 @@ export default class WeatherDetails extends Component {
           <Text style={styles.cityText}> Cairo</Text>
         </View>
         <View style={styles.descView}>
-          <Text style={styles.descText}> clear sky </Text>
+          <Text style={styles.descText}> light intensity drizzle </Text>
           <Image
             style={styles.descImage}
             source={{

@@ -5,13 +5,15 @@ import SearchButton from '../Components/SearchButton';
 import SearchInput from '../Components/SearchInput';
 import { connect } from 'react-redux';
 // Add Actions - replace 'Your' with whatever your reducer is called :)
-// import YourActions from '../Redux/YourRedux'
+import SearchActions from '../Redux/SearchRedux';
 
 // Styles
 import styles from './Styles/HomeScreenStyle';
 
 class HomeScreen extends Component {
   render() {
+    const { searchSubmit, onSearchTermChange } = this.props;
+    console.log('--this.props--', this.props);
     return (
       <View style={styles.mainContainer}>
         <Image
@@ -20,8 +22,8 @@ class HomeScreen extends Component {
           resizeMode="stretch"
         />
         <View style={styles.centeredView}>
-          <SearchInput />
-          <SearchButton />
+          <SearchInput onChangeText={onSearchTermChange} />
+          <SearchButton onSubmit={searchSubmit} />
         </View>
       </View>
     );
@@ -29,11 +31,18 @@ class HomeScreen extends Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  const { search } = state;
+  return {
+    search: search
+  };
 };
 
 const mapDispatchToProps = dispatch => {
-  return {};
+  const { search: searchAction, onSearchTermChange } = SearchActions;
+  return {
+    searchSubmit: () => dispatch(searchAction()),
+    onSearchTermChange: val => dispatch(onSearchTermChange(val))
+  };
 };
 
 export default connect(

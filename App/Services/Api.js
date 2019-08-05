@@ -1,8 +1,10 @@
 // a library to wrap and simplify api calls
-import apisauce from 'apisauce'
+import apisauce from 'apisauce';
+
+const API_KEY = 'bf1c5dcb49e1533a7d394bf6bced02c8';
 
 // our "constructor"
-const create = (baseURL = 'https://api.github.com/') => {
+const create = (baseURL = 'http://api.openweathermap.org/') => {
   // ------
   // STEP 1
   // ------
@@ -18,7 +20,7 @@ const create = (baseURL = 'https://api.github.com/') => {
     },
     // 10 second timeout...
     timeout: 10000
-  })
+  });
 
   // ------
   // STEP 2
@@ -34,9 +36,13 @@ const create = (baseURL = 'https://api.github.com/') => {
   // Since we can't hide from that, we embrace it by getting out of the
   // way at this level.
   //
-  const getRoot = () => api.get('')
-  const getRate = () => api.get('rate_limit')
-  const getUser = (username) => api.get('search/users', {q: username})
+  const getRoot = () => api.get('');
+  const getRate = () => api.get('rate_limit');
+  const getUser = searchTerm =>
+    api.get('data/2.5/weather', { q: searchTerm }, { APPID: API_KEY });
+
+  const getWeather = searchTerm =>
+    api.get('data/2.5/weather', { q: searchTerm, APPID: API_KEY });
 
   // ------
   // STEP 3
@@ -54,11 +60,12 @@ const create = (baseURL = 'https://api.github.com/') => {
     // a list of the API functions from step 2
     getRoot,
     getRate,
-    getUser
-  }
-}
+    getUser,
+    getWeather
+  };
+};
 
 // let's return back our create method as the default.
 export default {
   create
-}
+};

@@ -13,11 +13,12 @@ export default StyleSheet.create({
     flexDirection: 'row'
   },
   descImage: {
-    width: 50,
-    height: 50
+    width: 40,
+    height: 40
   },
   descText: {
-    ...Fonts.style.h2
+    ...Fonts.style.h2,
+    fontSize: 25
   },
   tempDetailsCard: {
     backgroundColor: Colors.cloud,
