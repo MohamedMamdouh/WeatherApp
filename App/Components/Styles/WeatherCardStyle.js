@@ -1,14 +1,15 @@
 import { StyleSheet } from 'react-native';
+import { Colors } from '../../Themes';
 
 export default StyleSheet.create({
   container: {
-    backgroundColor: '#fff',
     margin: 20,
     height: 60,
     borderRadius: 10,
     justifyContent: 'center',
     padding: 10,
-    flexDirection: 'row'
+    flexDirection: 'row',
+    backgroundColor: Colors.cloud
   },
   deleteBtn: {
     flex: 1,

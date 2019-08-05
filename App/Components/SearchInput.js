@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { Component } from 'react';
 // import PropTypes from 'prop-types';
-import { View, TextInput } from "react-native";
-import styles from "./Styles/SearchInputStyle";
+import { View, TextInput } from 'react-native';
+import styles from './Styles/SearchInputStyle';
 
 export default class SearchInput extends Component {
   // // Prop type warnings
@@ -23,6 +23,8 @@ export default class SearchInput extends Component {
           clearButtonMode="always"
           underlineColorAndroid="transparent"
           style={styles.textInput}
+          autoCorrect={false}
+          autoCapitalize={false}
         />
       </View>
     );

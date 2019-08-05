@@ -1,40 +1,74 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet } from 'react-native';
+import { Fonts, Colors } from '../../Themes';
 
 export default StyleSheet.create({
   container: {
     flex: 1
   },
+  cityText: {
+    ...Fonts.style.h2,
+    color: Colors.background
+  },
   descView: {
-    flexDirection: "row"
+    flexDirection: 'row'
   },
   descImage: {
-    width: 20,
-    height: 20
+    width: 50,
+    height: 50
   },
-  descText: {},
+  descText: {
+    ...Fonts.style.h2
+  },
+  tempDetailsCard: {
+    backgroundColor: Colors.cloud,
+    marginRight: 20,
+    borderRadius: 10,
+    paddingVertical: 20,
+    paddingHorizontal: 5
+  },
   tempView: {
-    flexDirection: "row"
+    flexDirection: 'row'
   },
-  tempText: {},
-  tempTextDetails: {},
+  tempText: {
+    ...Fonts.style.h4
+  },
+  tempTextDetails: {
+    ...Fonts.style.h4
+  },
   pressureView: {
-    flexDirection: "row"
+    flexDirection: 'row'
   },
-  pressureText: {},
-  pressureTextDetails: {},
+  pressureText: {
+    ...Fonts.style.h4
+  },
+  pressureTextDetails: {
+    ...Fonts.style.h4
+  },
   humidityView: {
-    flexDirection: "row"
+    flexDirection: 'row'
   },
-  humidityText: {},
-  humidityTextDetails: {},
+  humidityText: {
+    ...Fonts.style.h4
+  },
+  humidityTextDetails: {
+    ...Fonts.style.h4
+  },
   todayTempView: {
-    flexDirection: "row"
+    flexDirection: 'row'
   },
-  todayHTempText: {},
-  todayTempLText: {},
+  todayHTempText: {
+    ...Fonts.style.h4
+  },
+  todayTempLText: {
+    ...Fonts.style.h4
+  },
   windView: {
-    flexDirection: "row"
+    flexDirection: 'row'
   },
-  windText: {},
-  windTextDetails: {}
+  windText: {
+    ...Fonts.style.h4
+  },
+  windTextDetails: {
+    ...Fonts.style.h4
+  }
 });
