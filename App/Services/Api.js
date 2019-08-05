@@ -42,7 +42,11 @@ const create = (baseURL = 'http://api.openweathermap.org/') => {
     api.get('data/2.5/weather', { q: searchTerm }, { APPID: API_KEY });
 
   const getWeather = searchTerm =>
-    api.get('data/2.5/weather', { q: searchTerm, APPID: API_KEY });
+    api.get('data/2.5/weather', {
+      q: searchTerm,
+      APPID: API_KEY,
+      units: 'metric'
+    });
 
   // ------
   // STEP 3

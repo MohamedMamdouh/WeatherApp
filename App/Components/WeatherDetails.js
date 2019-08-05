@@ -16,40 +16,48 @@ export default class WeatherDetails extends Component {
   // }
 
   render() {
+    const {
+      result: {
+        name,
+        weather,
+        wind: { speed },
+        main: { humidity, pressure, temp, temp_max, temp_min }
+      }
+    } = this.props;
     return (
       <View style={styles.container}>
         <View style={styles.cityView}>
-          <Text style={styles.cityText}> Cairo</Text>
+          <Text style={styles.cityText}> {name}</Text>
         </View>
         <View style={styles.descView}>
-          <Text style={styles.descText}> light intensity drizzle </Text>
+          <Text style={styles.descText}> {weather[0].description} </Text>
           <Image
             style={styles.descImage}
             source={{
-              uri: 'http://openweathermap.org/img/wn/10d@2x.png'
+              uri: `http://openweathermap.org/img/wn/${weather[0].icon}@2x.png`
             }}
           />
         </View>
         <View style={styles.tempDetailsCard}>
           <View style={styles.tempView}>
             <Text style={styles.tempText}>Temperature: </Text>
-            <Text style={styles.tempTextDetails}>30°</Text>
+            <Text style={styles.tempTextDetails}>{temp}°</Text>
           </View>
           <View style={styles.pressureView}>
             <Text style={styles.pressureText}>Pressure: </Text>
-            <Text style={styles.pressureTextDetails}>1009</Text>
+            <Text style={styles.pressureTextDetails}>{pressure}</Text>
           </View>
           <View style={styles.humidityView}>
             <Text style={styles.humidityText}>Humidity: </Text>
-            <Text style={styles.humidityTextDetails}>92%</Text>
+            <Text style={styles.humidityTextDetails}>{humidity}%</Text>
           </View>
           <View style={styles.todayTempView}>
-            <Text style={styles.todayHTempText}>40°H / </Text>
-            <Text style={styles.todayTempLText}>20°L</Text>
+            <Text style={styles.todayHTempText}>{temp_max}°H / </Text>
+            <Text style={styles.todayTempLText}>{temp_min}°L</Text>
           </View>
           <View style={styles.windView}>
             <Text style={styles.windText}>Wind Speed: </Text>
-            <Text style={styles.windTextDetails}>1.45 mph</Text>
+            <Text style={styles.windTextDetails}>{speed} mph</Text>
           </View>
         </View>
       </View>
