@@ -1,18 +1,14 @@
 import { takeLatest, all } from 'redux-saga/effects';
 import API from '../Services/Api';
-import FixtureAPI from '../Services/FixtureApi';
-import DebugConfig from '../Config/DebugConfig';
 
 /* ------------- Types ------------- */
 
 import { StartupTypes } from '../Redux/StartupRedux';
-import { GithubTypes } from '../Redux/GithubRedux';
 import { SearchTypes } from '../Redux/SearchRedux';
 
 /* ------------- Sagas ------------- */
 
 import { startup } from './StartupSagas';
-import { getUserAvatar } from './GithubSagas';
 import { getSearchResult } from './SearchSagas';
 
 /* ------------- API ------------- */
@@ -29,7 +25,6 @@ export default function* root() {
     takeLatest(StartupTypes.STARTUP, startup),
 
     // some sagas receive extra parameters in addition to an action
-    takeLatest(GithubTypes.USER_REQUEST, getUserAvatar, api),
     takeLatest(SearchTypes.SEARCH, getSearchResult, api)
   ]);
 }

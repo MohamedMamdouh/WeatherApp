@@ -1,7 +1,5 @@
 import { createReducer, createActions } from 'reduxsauce';
 import Immutable from 'seamless-immutable';
-import { filter } from 'ramda';
-import { startsWith } from 'ramdasauce';
 
 /* ------------- Types and Action Creators ------------- */
 
@@ -35,7 +33,7 @@ export const performSearch = state => {
 };
 
 export const searchSuccess = (state, { result }) => {
-  return state.merge({ searching: false, result });
+  return state.merge({ searching: false, result, error: '' });
 };
 export const searchError = (state, { error }) => {
   return state.merge({ searching: false, error });
