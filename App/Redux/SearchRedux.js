@@ -29,7 +29,7 @@ export const onSearchTermChange = (state, { searchTerm }) => {
 };
 
 export const performSearch = state => {
-  return state.merge({ searching: true });
+  return state.merge({ error: '', searching: true });
 };
 
 export const searchSuccess = (state, { result }) => {

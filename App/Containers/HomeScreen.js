@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Image, View, Text } from 'react-native';
+import { Image, View, ActivityIndicator } from 'react-native';
 import { Images } from '../Themes';
 import SearchButton from '../Components/SearchButton';
 import SearchInput from '../Components/SearchInput';
@@ -21,6 +21,7 @@ class HomeScreen extends Component {
       state
     } = this.props;
     const error = state.search.error || state.searchHistory.error;
+    const loading = state.search.searching || state.searchHistory.searching;
     return (
       <View style={styles.mainContainer}>
         <Image
@@ -30,6 +31,7 @@ class HomeScreen extends Component {
         />
         <View style={styles.centeredView}>
           {error ? <Error message={error.message} /> : null}
+          {loading ? <ActivityIndicator /> : null}
           <SearchInput onChangeText={onSearchTermChange} />
           <SearchButton onSubmit={searchSubmit} />
           <HistoryBtn onSubmit={searchHistorySubmit} />

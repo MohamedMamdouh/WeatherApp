@@ -38,7 +38,7 @@ export const saveSearchHistoryTerm = (state, { searchTerm }) => {
 };
 
 export const performHistorySearch = state => {
-  return state.merge({ searching: true });
+  return state.merge({ error: '', searching: true });
 };
 
 export const searchHistorySuccess = (state, { result }) => {
