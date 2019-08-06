@@ -20,14 +20,6 @@ export function* getSearchResults(api) {
       }
       return i.data;
     });
-    console.log('response', data);
-    // const data = searchTerms.map(searchTerm=>{
-    //   const response = yield call(api.getWeather, searchTerm);
-    //   if (!response.ok) {
-    //     throw new Error('Error Occured Please Try Again');
-    //   }
-    //   return response.data;
-    // })
     yield put(SearchHistoryActions.searchHistorySuccess(data));
     yield put(
       NavigationActions.navigate({ routeName: 'WeatherHistoryListScreen' })
