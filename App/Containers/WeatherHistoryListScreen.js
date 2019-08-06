@@ -25,7 +25,7 @@ class WeatherHistoryListScreen extends Component {
         <View style={styles.container}>
           <ScrollView>
             {searchHistoryData.map(i => (
-              <WeatherCard data={i} />
+              <WeatherCard data={i} key={i.id} />
             ))}
           </ScrollView>
         </View>
