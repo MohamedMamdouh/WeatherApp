@@ -5,11 +5,13 @@ import API from '../Services/Api';
 
 import { StartupTypes } from '../Redux/StartupRedux';
 import { SearchTypes } from '../Redux/SearchRedux';
+import { SearchHistoryTypes } from '../Redux/SearchHistoryRedux';
 
 /* ------------- Sagas ------------- */
 
 import { startup } from './StartupSagas';
 import { getSearchResult } from './SearchSagas';
+import { getSearchResults } from './SearchHistorySagas';
 
 /* ------------- API ------------- */
 
@@ -25,6 +27,7 @@ export default function* root() {
     takeLatest(StartupTypes.STARTUP, startup),
 
     // some sagas receive extra parameters in addition to an action
-    takeLatest(SearchTypes.SEARCH, getSearchResult, api)
+    takeLatest(SearchTypes.SEARCH, getSearchResult, api),
+    takeLatest(SearchHistoryTypes.HISTORY_SEARCH, getSearchResults, api)
   ]);
 }

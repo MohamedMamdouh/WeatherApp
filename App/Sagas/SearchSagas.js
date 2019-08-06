@@ -1,6 +1,7 @@
 import { call, put, select } from 'redux-saga/effects';
 import { NavigationActions } from 'react-navigation';
 import SearchActions from '../Redux/SearchRedux';
+import SearchHistoryActions from '../Redux/SearchHistoryRedux';
 
 const selectSearchTerm = state => state.search.searchTerm;
 
@@ -13,6 +14,7 @@ export function* getSearchResult(api) {
     if (response.ok) {
       // do data conversion here if needed
       yield put(SearchActions.searchSuccess(data));
+      yield put(SearchHistoryActions.searchHistory(searchTerm));
       yield put(
         NavigationActions.navigate({ routeName: 'WeatherDetailsScreen' })
       );

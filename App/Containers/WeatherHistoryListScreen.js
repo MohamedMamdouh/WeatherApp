@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { View, Image } from 'react-native';
+import { View, Image, ScrollView } from 'react-native';
 import { connect } from 'react-redux';
 import { Images } from '../Themes';
 
@@ -12,6 +12,9 @@ import styles from './Styles/WeatherHistoryListScreenStyle';
 
 class WeatherHistoryListScreen extends Component {
   render() {
+    const {
+      searchHistory: { searchHistoryData }
+    } = this.props;
     return (
       <View style={styles.mainContainer}>
         <Image
@@ -20,7 +23,11 @@ class WeatherHistoryListScreen extends Component {
           resizeMode="cover"
         />
         <View style={styles.container}>
-          <WeatherCard />
+          <ScrollView>
+            {searchHistoryData.map(i => (
+              <WeatherCard data={i} />
+            ))}
+          </ScrollView>
         </View>
       </View>
     );
@@ -28,7 +35,10 @@ class WeatherHistoryListScreen extends Component {
 }
 
 const mapStateToProps = state => {
-  return {};
+  const { searchHistory } = state;
+  return {
+    searchHistory
+  };
 };
 
 const mapDispatchToProps = dispatch => {
