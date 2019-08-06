@@ -19,7 +19,7 @@ export default class SearchInput extends Component {
           underlineColorAndroid="transparent"
           style={styles.textInput}
           autoCorrect={false}
-          autoCapitalize={false}
+          autoCapitalize="none"
           onChangeText={onChangeText}
         />
       </View>
